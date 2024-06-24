@@ -89,7 +89,7 @@ const NavList = () => {
 
 const SimpleNavbar = () => {
   const { loading, user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const [openNav, setOpenNav] = useState(false);
   const handleWindowResize = () =>
     window.innerWidth >= 960 && setOpenNav(false);

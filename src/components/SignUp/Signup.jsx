@@ -2,10 +2,13 @@ import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,6 +19,11 @@ const SignUp = () => {
     try {
       const user = await createUser(data);
       console.log(user);
+      Swal.fire({
+        title: "Good job!",
+        text: "User Created Successfully!",
+        icon: "success",
+      }).then(navigate("/"));
     } catch (error) {
       console.error(error);
     }
