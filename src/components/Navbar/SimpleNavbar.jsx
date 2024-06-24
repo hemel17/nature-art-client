@@ -4,10 +4,13 @@ import {
   Typography,
   IconButton,
   Button,
+  Spinner,
+  Avatar,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const NavList = () => {
   return (
@@ -85,6 +88,8 @@ const NavList = () => {
 };
 
 const SimpleNavbar = () => {
+  const { loading, user, logOut } = useContext(AuthContext);
+  console.log(user);
   const [openNav, setOpenNav] = useState(false);
   const handleWindowResize = () =>
     window.innerWidth >= 960 && setOpenNav(false);
@@ -112,26 +117,49 @@ const SimpleNavbar = () => {
             <NavList />
           </div>
           <div className="flex items-center gap-2">
-            <div>
-              <Link to={"/login"}>
+            {loading ? (
+              <Spinner />
+            ) : user ? (
+              <div>
+                <Avatar
+                  src={
+                    user.photoURL ||
+                    "https://docs.material-tailwind.com/img/face-2.jpg"
+                  }
+                  alt={user.displayName}
+                />
                 <Button
-                  color="green"
+                  color="red"
                   variant="outlined"
-                  className="mr-2 rounded-full"
+                  className="ml-2"
+                  onClick={logOut}
                 >
-                  Log In
+                  Log Out
                 </Button>
-              </Link>
-              <Link to={"/register"}>
-                <Button
-                  color="blue"
-                  variant="outlined"
-                  className="rounded-full"
-                >
-                  Register
-                </Button>
-              </Link>
-            </div>
+              </div>
+            ) : (
+              <div>
+                <Link to={"/login"}>
+                  <Button
+                    color="green"
+                    variant="outlined"
+                    className="mr-2 rounded-full"
+                  >
+                    Log In
+                  </Button>
+                </Link>
+                <Link to={"/register"}>
+                  <Button
+                    color="blue"
+                    variant="outlined"
+                    className="rounded-full"
+                  >
+                    Register
+                  </Button>
+                </Link>
+              </div>
+            )}
+
             <IconButton
               variant="text"
               className="w-6 h-6 ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
