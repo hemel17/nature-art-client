@@ -11,6 +11,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 const NavList = () => {
   return (
@@ -122,12 +123,16 @@ const SimpleNavbar = () => {
             ) : user ? (
               <div>
                 <Avatar
+                  id="userImg"
                   src={
                     user.photoURL ||
                     "https://docs.material-tailwind.com/img/face-2.jpg"
                   }
                   alt={user.displayName}
                 />
+                <Tooltip anchorSelect="#userImg" place="bottom">
+                  {user.displayName}
+                </Tooltip>
                 <Button
                   color="red"
                   variant="outlined"
