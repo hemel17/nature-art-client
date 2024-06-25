@@ -1,33 +1,41 @@
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
+import {
+  Card,
+  Input,
+  Button,
+  Typography,
+  Select,
+  Option,
+} from "@material-tailwind/react";
+import { Controller, useForm } from "react-hook-form";
+// import Swal from "sweetalert2";
 
 const AddCraftItem = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    control,
+    // reset,
   } = useForm();
 
   const onSubmit = async (data) => {
     console.log(data);
-    try {
-      Swal.fire({
-        title: "Good job!",
-        text: "Login Successful!",
-        icon: "success",
-      }).then(() => {
-        reset();
-      });
-    } catch (error) {
-      console.error(error);
-      Swal.fire({
-        title: "Something went wrong!",
-        text: "Your email or password is incorrect!",
-        icon: "error",
-      });
-    }
+    // try {
+    //   Swal.fire({
+    //     title: "Good job!",
+    //     text: "Login Successful!",
+    //     icon: "success",
+    //   }).then(() => {
+    //     reset();
+    //   });
+    // } catch (error) {
+    //   console.error(error);
+    //   Swal.fire({
+    //     title: "Something went wrong!",
+    //     text: "Your email or password is incorrect!",
+    //     icon: "error",
+    //   });
+    // }
   };
   return (
     <Card
@@ -45,6 +53,7 @@ const AddCraftItem = () => {
         className=" mt-8 mb-2 w-full max-w-[80%]"
         onSubmit={handleSubmit(onSubmit)}
       >
+        {/* image and item name */}
         <div className="gap-6 md:flex">
           <div className="flex flex-col flex-1 gap-6 my-1">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -93,6 +102,7 @@ const AddCraftItem = () => {
           </div>
         </div>
 
+        {/* subcategory and description */}
         <div className="gap-6 md:flex">
           <div className="flex flex-col flex-1 gap-6 my-1">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -141,6 +151,7 @@ const AddCraftItem = () => {
           </div>
         </div>
 
+        {/* price and rating */}
         <div className="gap-6 md:flex">
           <div className="flex flex-col flex-1 gap-6 my-1">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -192,6 +203,64 @@ const AddCraftItem = () => {
             {errors.rating && (
               <Typography className="text-red-500">
                 {errors.rating.message}
+              </Typography>
+            )}
+          </div>
+        </div>
+
+        {/* customization and processign time */}
+        <div className="gap-6 md:flex">
+          <div className="flex flex-col flex-1 gap-6 my-1">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Customization
+            </Typography>
+
+            <Controller
+              name="customization"
+              control={control}
+              defaultValue=""
+              rules={{ required: "Customization is required!" }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  error={Boolean(errors.customization)}
+                  className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                >
+                  <Option value="yes">Yes</Option>
+                  <Option value="no">No</Option>
+                </Select>
+              )}
+            />
+            {errors.customization && (
+              <Typography className="text-red-500">
+                {errors.customization.message}
+              </Typography>
+            )}
+          </div>
+
+          <div className="flex flex-col flex-1 gap-6 my-1">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Processing Time
+            </Typography>
+            <Input
+              size="lg"
+              type="text"
+              {...register("processing_time", {
+                required: "Processing Time is required!",
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "Only numbers are allowed",
+                },
+              })}
+              placeholder="Enter Processing Time (in minute)"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+            />
+            {errors.processing_time && (
+              <Typography className="text-red-500">
+                {errors.processing_time.message}
               </Typography>
             )}
           </div>

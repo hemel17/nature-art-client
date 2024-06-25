@@ -6,7 +6,9 @@ import LogIn from "../LogIn/Login";
 const PrivateRoute = ({ children }) => {
   const { loading, user } = useContext(AuthContext);
   return (
-    <section>{loading ? <Spinner /> : user ? children : <LogIn />}</section>
+    <section>
+      {loading ? <Spinner className="mx-auto" /> : user ? children : <LogIn />}
+    </section>
   );
 };
 
