@@ -6,19 +6,28 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
+import { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { AuthContext } from "../../provider/AuthProvider";
 // import Swal from "sweetalert2";
 
 const AddCraftItem = () => {
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
     // reset,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: user.email,
+      name: user.displayName,
+    },
+  });
 
   const onSubmit = async (data) => {
+    console.log("clicked");
     console.log(data);
     // try {
     //   Swal.fire({
@@ -194,7 +203,7 @@ const AddCraftItem = () => {
                   message: "Only numbers between 0 and 5 are allowed",
                 },
               })}
-              placeholder="Enter Rating"
+              placeholder="Enter Rating (0-5)"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
@@ -208,7 +217,7 @@ const AddCraftItem = () => {
           </div>
         </div>
 
-        {/* customization and processign time */}
+        {/* customization and processinng time */}
         <div className="gap-6 md:flex">
           <div className="flex flex-col flex-1 gap-6 my-1">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -261,6 +270,113 @@ const AddCraftItem = () => {
             {errors.processing_time && (
               <Typography className="text-red-500">
                 {errors.processing_time.message}
+              </Typography>
+            )}
+          </div>
+        </div>
+
+        {/* stock and email */}
+        <div className="gap-6 md:flex">
+          <div className="flex flex-col flex-1 gap-6 my-1">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              Stock Status
+            </Typography>
+
+            <Controller
+              name="stock_status"
+              control={control}
+              defaultValue=""
+              rules={{ required: "Stock Status is required!" }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  error={Boolean(errors.customization)}
+                  className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                >
+                  <Option value="in_stock">In Stock</Option>
+                  <Option value="made_to_order">Made To Order</Option>
+                </Select>
+              )}
+            />
+            {errors.customization && (
+              <Typography className="text-red-500">
+                {errors.customization.message}
+              </Typography>
+            )}
+          </div>
+
+          <div className="flex flex-col flex-1 gap-6 my-1">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              User Email
+            </Typography>
+            <Input
+              size="lg"
+              type="email"
+              disabled
+              {...register("email", {
+                required: "User Email is required!",
+              })}
+              label={user.email}
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none px-3",
+              }}
+            />
+            {errors.email && (
+              <Typography className="text-red-500">
+                {errors.email.message}
+              </Typography>
+            )}
+          </div>
+        </div>
+
+        {/* name */}
+        <div className="gap-6 md:flex">
+          <div className="flex flex-col flex-1 gap-6 my-1">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              User Name
+            </Typography>
+            <Input
+              size="lg"
+              type="text"
+              disabled
+              {...register("name", {
+                required: "User Name is required!",
+              })}
+              label={user.displayName}
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none px-3",
+              }}
+            />
+            {errors.name && (
+              <Typography className="text-red-500">
+                {errors.name.message}
+              </Typography>
+            )}
+          </div>
+
+          {/* just for design purpose */}
+          <div className="flex-col flex-1 hidden gap-6 my-1 md:flex md:invisible">
+            <Typography variant="h6" color="blue-gray" className="-mb-3">
+              User Name
+            </Typography>
+            <Input
+              size="lg"
+              type="text"
+              disabled
+              {...register("name", {
+                required: "User Name is required!",
+              })}
+              label={user.displayName}
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none px-3",
+              }}
+            />
+            {errors.name && (
+              <Typography className="text-red-500">
+                {errors.name.message}
               </Typography>
             )}
           </div>
