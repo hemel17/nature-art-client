@@ -1,9 +1,10 @@
-import React from "react";
 import CraftItems from "../CraftItems/CraftItems";
+import Slider from "../Slider/Slider";
 
 const Home = () => {
   return (
     <>
+      <Slider />
       <CraftItems />
     </>
   );
