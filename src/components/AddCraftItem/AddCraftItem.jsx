@@ -9,7 +9,8 @@ import {
 import { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
-// import Swal from "sweetalert2";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddCraftItem = () => {
   const { user } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const AddCraftItem = () => {
     handleSubmit,
     formState: { errors },
     control,
-    // reset,
+    reset,
   } = useForm({
     defaultValues: {
       email: user.email,
@@ -27,24 +28,26 @@ const AddCraftItem = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log("clicked");
-    console.log(data);
-    // try {
-    //   Swal.fire({
-    //     title: "Good job!",
-    //     text: "Login Successful!",
-    //     icon: "success",
-    //   }).then(() => {
-    //     reset();
-    //   });
-    // } catch (error) {
-    //   console.error(error);
-    //   Swal.fire({
-    //     title: "Something went wrong!",
-    //     text: "Your email or password is incorrect!",
-    //     icon: "error",
-    //   });
-    // }
+    try {
+      const res = await axios.post("http://localhost:5000/forest", data);
+      console.log(res);
+      if (res?.data?.acknowledged) {
+        Swal.fire({
+          title: "Good job!",
+          text: "Item Added Successfully!",
+          icon: "success",
+        }).then(() => {
+          reset();
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Something went wrong!",
+        text: "Please Give All The Necessary Informaion",
+        icon: "error",
+      });
+    }
   };
   return (
     <Card
@@ -261,7 +264,7 @@ const AddCraftItem = () => {
                   message: "Only numbers are allowed",
                 },
               })}
-              placeholder="Enter Processing Time (in minute)"
+              placeholder="Enter Processing Time (hours)"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
