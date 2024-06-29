@@ -1,10 +1,16 @@
 import { Typography } from "@material-tailwind/react";
+import { Typewriter } from "react-simple-typewriter";
 
 const ExtraTwo = () => {
   return (
     <section className="my-4 md:my-6">
       <Typography variant="h2" className="my-4 text-center font-museo">
-        Beautiful Bangladesh
+        <Typewriter
+          words={["Beautiful Bangladesh"]}
+          loop={0}
+          cursor
+          cursorBlinking
+        />
       </Typography>
       <iframe
         className="max-w-[90%] mx-auto"
