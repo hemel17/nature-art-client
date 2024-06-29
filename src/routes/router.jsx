@@ -7,6 +7,7 @@ import AddCraftItem from "../components/AddCraftItem/AddCraftItem";
 import Home from "../components/Home/Home";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import axios from "axios";
+import AllArtAndCraftItems from "../components/AllArtAndCraftItmes/AllArtAndCraftItems";
 
 const router = createBrowserRouter([
   {
@@ -35,9 +36,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewDetails/:_id",
-        element: <ViewDetails />,
+        element: (
+          <PrivateRoute>
+            <ViewDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           axios.get(`http://localhost:5000/forest/${params._id}`),
+      },
+      {
+        path: "/allArtAndCraftItems",
+        element: (
+          <PrivateRoute>
+            <AllArtAndCraftItems />
+          </PrivateRoute>
+        ),
+        loader: () => axios.get("http://localhost:5000/forest"),
       },
     ],
   },
