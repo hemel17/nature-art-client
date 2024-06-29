@@ -8,11 +8,13 @@ import Home from "../components/Home/Home";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import axios from "axios";
 import AllArtAndCraftItems from "../components/AllArtAndCraftItmes/AllArtAndCraftItems";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
