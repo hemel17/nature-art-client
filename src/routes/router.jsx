@@ -9,6 +9,7 @@ import ViewDetails from "../components/ViewDetails/ViewDetails";
 import axios from "axios";
 import AllArtAndCraftItems from "../components/AllArtAndCraftItmes/AllArtAndCraftItems";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import MyArtAndCraft from "../components/MyArtAndCraft/MyArtAndCraft";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AllArtAndCraftItems />
+          </PrivateRoute>
+        ),
+        loader: () => axios.get("http://localhost:5000/forest"),
+      },
+      {
+        path: "/myArt&CraftList/:email",
+        element: (
+          <PrivateRoute>
+            <MyArtAndCraft />
           </PrivateRoute>
         ),
         loader: () => axios.get("http://localhost:5000/forest"),

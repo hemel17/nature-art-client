@@ -14,6 +14,14 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Tooltip } from "react-tooltip";
 
 const NavList = () => {
+  const { user, loading } = useContext(AuthContext);
+
+  const myArtandCraftPath = loading
+    ? `/myArt&CraftList`
+    : user
+    ? `/myArt&CraftList/${user.displayName}`
+    : `/myArt&CraftList`;
+
   return (
     <ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -74,7 +82,7 @@ const NavList = () => {
         className="p-1 text-base font-medium"
       >
         <NavLink
-          to={"/myArt&CraftList"}
+          to={myArtandCraftPath}
           className={({ isActive }) =>
             isActive
               ? "flex items-center transition-colors hover:text-blue-500 text-blue-500"
