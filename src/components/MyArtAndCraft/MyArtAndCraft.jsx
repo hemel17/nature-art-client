@@ -8,26 +8,44 @@ import {
   Select,
   Typography,
 } from "@material-tailwind/react";
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MyArtAndCraft = () => {
   const { data } = useLoaderData();
+  const { user } = useContext(AuthContext);
 
-  const [art, setArt] = useState(data);
-  const [originalArt, setOriginalArt] = useState(data);
+  const [art, setArt] = useState([]);
+  const [originalArt, setOriginalArt] = useState([]);
+
+  useEffect(() => {
+    const fetchUserArt = () => {
+      const userData = data.filter((e) => user.email === e.email);
+      console.log(userData);
+      setOriginalArt(userData);
+      setArt(userData);
+    };
+    fetchUserArt();
+  }, [data, user.email]);
 
   const handleSortChange = (e) => {
     if (e === "yes") {
       const yes = originalArt.filter((e) => e.customization === "yes");
       setArt(yes);
+      console.log(originalArt);
     }
     if (e === "no") {
       const no = originalArt.filter((e) => e.customization === "no");
       setArt(no);
+      console.log(originalArt);
     }
+  };
 
-    setOriginalArt(art);
+  const handleDelete = (_id) => {
+    console.log(_id);
+    axios.delete(`http://localhost:5000/forest/${_id}`);
   };
   return (
     <section className="my-4 md:my-10">
@@ -76,7 +94,9 @@ const MyArtAndCraft = () => {
               </CardBody>
               <CardFooter className="flex gap-4">
                 <Button color="blue">Update</Button>
-                <Button color="red">Delete</Button>
+                <Button color="red" onClick={() => handleDelete(_id)}>
+                  Delete
+                </Button>
               </CardFooter>
             </Card>
           );
