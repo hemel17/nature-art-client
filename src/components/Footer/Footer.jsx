@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="w-full p-8 bg-white">
-      <div className="flex flex-row flex-wrap items-center justify-center text-center bg-white gap-y-6 gap-x-12 md:justify-between">
+    <footer className="w-full p-8 mt-6 md:mt-14 bg-blue-gray-900">
+      <div className="flex flex-row flex-wrap items-center justify-center text-center gap-y-6 gap-x-12 md:justify-between">
         <Link to={"/"}>
-          <Typography variant="h4" className="text-xl font-museo">
+          <Typography variant="h4" className="text-xl text-white font-museo">
             Nature <span className="text-green-400">Art</span>
           </Typography>
         </Link>
@@ -16,7 +16,7 @@ const Footer = () => {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal text-white transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               About Us
             </Typography>
@@ -26,7 +26,7 @@ const Footer = () => {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal text-white transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               License
             </Typography>
@@ -36,7 +36,7 @@ const Footer = () => {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal text-white transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               Contribute
             </Typography>
@@ -46,7 +46,7 @@ const Footer = () => {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal text-white transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               Contact Us
             </Typography>
@@ -54,7 +54,10 @@ const Footer = () => {
         </ul>
       </div>
       <hr className="my-8 border-blue-gray-50" />
-      <Typography color="blue-gray" className="font-normal text-center">
+      <Typography
+        color="blue-gray"
+        className="font-normal text-center text-white"
+      >
         &copy; 2023 Material Tailwind
       </Typography>
     </footer>
