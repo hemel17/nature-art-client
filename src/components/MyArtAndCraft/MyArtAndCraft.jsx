@@ -12,6 +12,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyArtAndCraft = () => {
   const { data } = useLoaderData();
@@ -43,9 +44,43 @@ const MyArtAndCraft = () => {
     }
   };
 
-  const handleDelete = (_id) => {
-    console.log(_id);
-    axios.delete(`http://localhost:5000/forest/${_id}`);
+  const handleDelete = async (_id) => {
+    const confirmation = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (confirmation.isConfirmed) {
+      try {
+        const res = await axios.delete(`http://localhost:5000/forest/${_id}`);
+        if (res.status === 200) {
+          const filtered = art.filter((e) => e._id !== _id);
+          setArt(filtered);
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      } catch (error) {
+        console.error("Delete request failed:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to delete the file.",
+          icon: "error",
+        });
+      }
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+    }
   };
   return (
     <section className="my-4 md:my-10">
