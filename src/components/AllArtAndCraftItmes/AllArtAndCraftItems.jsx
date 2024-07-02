@@ -78,7 +78,7 @@ const AllArtAndCraftItems = () => {
                   </Typography>
                 </td>
                 <td className={classes}>
-                  <Link to={`/viewDetails/${_id}`}>
+                  <Link to={`/viewUserArtDetails/${_id}`}>
                     <Typography
                       variant="small"
                       color="blue-gray"

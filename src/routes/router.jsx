@@ -10,6 +10,7 @@ import axios from "axios";
 import AllArtAndCraftItems from "../components/AllArtAndCraftItmes/AllArtAndCraftItems";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import MyArtAndCraft from "../components/MyArtAndCraft/MyArtAndCraft";
+import ViewUserArtDetails from "../components/ViewUserArtDetails/ViewUserArtDetails";
 
 const router = createBrowserRouter([
   {
@@ -48,22 +49,32 @@ const router = createBrowserRouter([
           axios.get(`http://localhost:5000/forest/${params._id}`),
       },
       {
+        path: "/viewUserArtDetails/:_id",
+        element: (
+          <PrivateRoute>
+            <ViewUserArtDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          axios.get(`http://localhost:5000/userArt/${params._id}`),
+      },
+      {
         path: "/allArtAndCraftItems",
         element: (
           <PrivateRoute>
             <AllArtAndCraftItems />
           </PrivateRoute>
         ),
-        loader: () => axios.get("http://localhost:5000/forest"),
+        loader: () => axios.get("http://localhost:5000/userArt"),
       },
       {
-        path: "/myArt&CraftList/:email",
+        path: "/myArt&CraftList/",
         element: (
           <PrivateRoute>
             <MyArtAndCraft />
           </PrivateRoute>
         ),
-        loader: () => axios.get("http://localhost:5000/forest"),
+        loader: () => axios.get("http://localhost:5000/userArt"),
       },
     ],
   },
