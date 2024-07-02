@@ -11,6 +11,7 @@ import AllArtAndCraftItems from "../components/AllArtAndCraftItmes/AllArtAndCraf
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import MyArtAndCraft from "../components/MyArtAndCraft/MyArtAndCraft";
 import ViewUserArtDetails from "../components/ViewUserArtDetails/ViewUserArtDetails";
+import UpdateArt from "../components/UpdateArt/UpdateArt";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,16 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => axios.get("http://localhost:5000/userArt"),
+      },
+      {
+        path: "/updateArt/:_id",
+        element: (
+          <PrivateRoute>
+            <UpdateArt />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          axios.get(`http://localhost:5000/userArt/${params._id}`),
       },
     ],
   },

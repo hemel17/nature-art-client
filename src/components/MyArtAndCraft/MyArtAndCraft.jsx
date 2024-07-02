@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -122,7 +122,9 @@ const MyArtAndCraft = () => {
                 </Typography>
               </CardBody>
               <CardFooter className="flex gap-4">
-                <Button color="blue">Update</Button>
+                <Link to={`/updateArt/${_id}`}>
+                  <Button color="blue">Update</Button>
+                </Link>
                 <Button color="red" onClick={() => handleDelete(_id)}>
                   Delete
                 </Button>
