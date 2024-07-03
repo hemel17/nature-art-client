@@ -18,6 +18,7 @@ import Architecture from "../components/ArtAndCraftCategories/Architecture/Archi
 import Floral from "../components/ArtAndCraftCategories/Floral/Floral";
 import Realistic from "../components/ArtAndCraftCategories/Realistic/Realistic";
 import Abstract from "../components/ArtAndCraftCategories/Abstract/Abstract";
+import ViewArtDetails from "../components/ArtAndCraftCategories/ViewArtDetails/ViewArtDetails";
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
         path: "/abstract",
         element: <Abstract />,
         loader: () => axios.get("http://localhost:5000/abstract"),
+      },
+      {
+        path: "/:location/:_id",
+        element: <ViewArtDetails />,
       },
     ],
   },
