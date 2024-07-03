@@ -1,3 +1,4 @@
+import ArtAndCraftCategories from "../ArtAndCraftCategories/ArtAndCraftCategories";
 import CraftItems from "../CraftItems/CraftItems";
 import ExtraOne from "../ExtraOne/ExtraOne";
 import ExtraTwo from "../ExtraTwo/ExtraTwo";
@@ -10,6 +11,7 @@ const Home = () => {
       <CraftItems />
       <ExtraOne />
       <ExtraTwo />
+      <ArtAndCraftCategories />
     </>
   );
 };
