@@ -12,6 +12,12 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import MyArtAndCraft from "../components/MyArtAndCraft/MyArtAndCraft";
 import ViewUserArtDetails from "../components/ViewUserArtDetails/ViewUserArtDetails";
 import UpdateArt from "../components/UpdateArt/UpdateArt";
+import Mountain from "../components/ArtAndCraftCategories/Mountain/Mountain";
+import Forest from "../components/ArtAndCraftCategories/Forest/Forest";
+import Architecture from "../components/ArtAndCraftCategories/Architecture/Architecture";
+import Floral from "../components/ArtAndCraftCategories/Floral/Floral";
+import Realistic from "../components/ArtAndCraftCategories/Realistic/Realistic";
+import Abstract from "../components/ArtAndCraftCategories/Abstract/Abstract";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +92,36 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           axios.get(`http://localhost:5000/userArt/${params._id}`),
+      },
+      {
+        path: "/mountain",
+        element: <Mountain />,
+        loader: () => axios.get("http://localhost:5000/mountain"),
+      },
+      {
+        path: "/forest",
+        element: <Forest />,
+        loader: () => axios.get("http://localhost:5000/forest"),
+      },
+      {
+        path: "/architecture",
+        element: <Architecture />,
+        loader: () => axios.get("http://localhost:5000/architecture"),
+      },
+      {
+        path: "/floral",
+        element: <Floral />,
+        loader: () => axios.get("http://localhost:5000/floral"),
+      },
+      {
+        path: "/realistic",
+        element: <Realistic />,
+        loader: () => axios.get("http://localhost:5000/realistic"),
+      },
+      {
+        path: "/abstract",
+        element: <Abstract />,
+        loader: () => axios.get("http://localhost:5000/abstract"),
       },
     ],
   },
