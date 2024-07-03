@@ -127,6 +127,8 @@ const router = createBrowserRouter([
       {
         path: "/:location/:_id",
         element: <ViewArtDetails />,
+        loader: ({ params }) =>
+          axios.get(`http://localhost:5000/${params.location}/${params._id}`),
       },
     ],
   },
