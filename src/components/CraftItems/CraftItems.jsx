@@ -18,7 +18,7 @@ const CraftItems = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "https://nature-1ozszurto-hemels-projects.vercel.app/forest"
+          "https://nature-art-server.onrender.com/forest"
         );
         setItems(res.data);
       } catch (error) {

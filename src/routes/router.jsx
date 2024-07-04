@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           axios.get(
-            `https://nature-1ozszurto-hemels-projects.vercel.app/forest/${params._id}`
+            `https://nature-art-server.onrender.com/forest/${params._id}`
           ),
       },
       {
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           axios.get(
-            `https://nature-1ozszurto-hemels-projects.vercel.app/userArt/${params._id}`
+            `https://nature-art-server.onrender.com/userArt/${params._id}`
           ),
       },
       {
@@ -78,9 +78,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/userArt"
-          ),
+          axios.get("https://nature-art-server.onrender.com/userArt"),
       },
       {
         path: "/myArt&CraftList/",
@@ -90,9 +88,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/userArt"
-          ),
+          axios.get("https://nature-art-server.onrender.com/userArt"),
       },
       {
         path: "/updateArt/:_id",
@@ -103,63 +99,51 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           axios.get(
-            `https://nature-1ozszurto-hemels-projects.vercel.app/userArt/${params._id}`
+            `https://nature-art-server.onrender.com/userArt/${params._id}`
           ),
       },
       {
         path: "/mountain",
         element: <Mountain />,
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/mountain"
-          ),
+          axios.get("https://nature-art-server.onrender.com/mountain"),
       },
       {
         path: "/forest",
         element: <Forest />,
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/forest"
-          ),
+          axios.get("https://nature-art-server.onrender.com/forest"),
       },
       {
         path: "/architecture",
         element: <Architecture />,
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/architecture"
-          ),
+          axios.get("https://nature-art-server.onrender.com/architecture"),
       },
       {
         path: "/floral",
         element: <Floral />,
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/floral"
-          ),
+          axios.get("https://nature-art-server.onrender.com/floral"),
       },
       {
         path: "/realistic",
         element: <Realistic />,
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/realistic"
-          ),
+          axios.get("https://nature-art-server.onrender.com/realistic"),
       },
       {
         path: "/abstract",
         element: <Abstract />,
         loader: () =>
-          axios.get(
-            "https://nature-1ozszurto-hemels-projects.vercel.app/abstract"
-          ),
+          axios.get("https://nature-art-server.onrender.com/abstract"),
       },
       {
         path: "/:location/:_id",
         element: <ViewArtDetails />,
         loader: ({ params }) =>
           axios.get(
-            `https://nature-1ozszurto-hemels-projects.vercel.app/${params.location}/${params._id}`
+            `https://nature-art-server.onrender.com/${params.location}/${params._id}`
           ),
       },
     ],

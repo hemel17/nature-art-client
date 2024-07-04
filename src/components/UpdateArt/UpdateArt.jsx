@@ -53,7 +53,7 @@ const UpdateArt = () => {
   const onSubmit = async (data) => {
     try {
       const res = await axios.put(
-        `https://nature-1ozszurto-hemels-projects.vercel.app/userArt/${_id}`,
+        `https://nature-art-server.onrender.com/userArt/${_id}`,
         data
       );
       console.log(res);

@@ -30,7 +30,7 @@ const AddCraftItem = () => {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        "https://nature-1ozszurto-hemels-projects.vercel.app/userArt",
+        "https://nature-art-server.onrender.com/userArt",
         data
       );
       console.log(res);
