@@ -1,10 +1,16 @@
 import { Typography } from "@material-tailwind/react";
+import { Typewriter } from "react-simple-typewriter";
 
 const ExtraOne = () => {
   return (
     <section className="my-4 md:my-6">
       <Typography variant="h2" className="text-center font-museo">
-        Why you should own a painting of forest
+        <Typewriter
+          words={["Why you should own a painting of forest"]}
+          loop={0}
+          cursor
+          cursorBlinking
+        />
       </Typography>
       \
       <Typography className="relative w-4/5 mx-auto text-lg text-justify md:w-3/5">

@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const CraftItems = () => {
   const [items, setItems] = useState([]);
@@ -16,7 +17,9 @@ const CraftItems = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/forest");
+        const res = await axios.get(
+          "https://nature-1ozszurto-hemels-projects.vercel.app/forest"
+        );
         setItems(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -28,7 +31,12 @@ const CraftItems = () => {
   return (
     <section className="my-4 md:my-10">
       <Typography variant="h2" className="text-center font-museo">
-        Incredible Forest Based Nartural Painting :
+        <Typewriter
+          words={["Incredible Forest Based Nartural Painting"]}
+          loop={0}
+          cursor
+          cursorBlinking
+        />
       </Typography>
       <div className="grid gap-4 my-4 md:grid-cols-2 lg:grid-cols-3 md:my-6">
         {items.map((item) => {

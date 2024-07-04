@@ -14,6 +14,7 @@ const ViewArtDetails = () => {
     image,
     item_name,
     subcategory_Name,
+    subcategory_name,
     short_description,
     price,
     rating,
@@ -34,7 +35,10 @@ const ViewArtDetails = () => {
             {item_name}
           </Typography>
           <Typography color="blue-gray" className="mb-2">
-            Category : <span className="font-semibold">{subcategory_Name}</span>
+            Category :{" "}
+            <span className="font-semibold">
+              {subcategory_Name || subcategory_name}
+            </span>
           </Typography>
           <Typography color="blue-gray" className="mb-2">
             Description : {short_description}

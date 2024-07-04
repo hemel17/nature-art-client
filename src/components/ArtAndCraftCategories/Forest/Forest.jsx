@@ -10,6 +10,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const Forest = () => {
   const { data } = useLoaderData();
+  console.log(data);
   return (
     <section className="my-4 md:my-6">
       <div className="w-full md:max-w-[80%] lg:max-w-[60%] grid grid-cols-1 md:grid-cols-2 mx-auto">
@@ -18,7 +19,7 @@ const Forest = () => {
             _id,
             image,
             item_name,
-            subcategory_Name,
+            subcategory_name,
             short_description,
             price,
             rating,
@@ -39,7 +40,7 @@ const Forest = () => {
                 </Typography>
                 <Typography color="blue-gray" className="mb-2">
                   Category :
-                  <span className="font-semibold">{subcategory_Name}</span>
+                  <span className="font-semibold">{subcategory_name}</span>
                 </Typography>
                 <Typography color="blue-gray" className="mb-2">
                   Description : {short_description}

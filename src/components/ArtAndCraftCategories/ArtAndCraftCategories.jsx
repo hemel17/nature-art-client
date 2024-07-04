@@ -5,6 +5,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const ArtAndCraftCategories = () => {
   const arts = [
@@ -45,7 +46,12 @@ const ArtAndCraftCategories = () => {
   return (
     <section className="my-4 md:my-10">
       <Typography variant="h2" className="text-center font-museo">
-        Art & Craft Categories
+        <Typewriter
+          words={["Art & Craft Categories"]}
+          loop={0}
+          cursor
+          cursorBlinking
+        />
       </Typography>
       <div className="grid grid-cols-1 gap-6 my-4 md:my-6 md:grid-cols-2 lg:grid-cols-3">
         {arts.map((art, idx) => {

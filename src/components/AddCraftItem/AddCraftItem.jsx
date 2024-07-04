@@ -29,7 +29,10 @@ const AddCraftItem = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:5000/userArt", data);
+      const res = await axios.post(
+        "https://nature-1ozszurto-hemels-projects.vercel.app/userArt",
+        data
+      );
       console.log(res);
       if (res?.data?.acknowledged) {
         Swal.fire({
