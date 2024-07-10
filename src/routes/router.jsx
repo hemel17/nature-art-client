@@ -54,7 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(`http://localhost:5000/forest/${params._id}`),
+          axios.get(`https://nature-art.vercel.app/forest/${params._id}`),
       },
       {
         path: "/viewUserArtDetails/:_id",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(`http://localhost:5000/userArt/${params._id}`),
+          axios.get(`https://nature-art.vercel.app/userArt/${params._id}`),
       },
       {
         path: "/allArtAndCraftItems",
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
             <AllArtAndCraftItems />
           </PrivateRoute>
         ),
-        loader: () => axios.get("http://localhost:5000/userArt"),
+        loader: () => axios.get("https://nature-art.vercel.app/userArt"),
       },
       {
         path: "/myArt&CraftList/",
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
             <MyArtAndCraft />
           </PrivateRoute>
         ),
-        loader: () => axios.get("http://localhost:5000/userArt"),
+        loader: () => axios.get("https://nature-art.vercel.app/userArt"),
       },
       {
         path: "/updateArt/:_id",
@@ -92,43 +92,45 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(`http://localhost:5000/userArt/${params._id}`),
+          axios.get(`https://nature-art.vercel.app/userArt/${params._id}`),
       },
       {
         path: "/mountain",
         element: <Mountain />,
-        loader: () => axios.get("http://localhost:5000/mountain"),
+        loader: () => axios.get("https://nature-art.vercel.app/mountain"),
       },
       {
         path: "/forest",
         element: <Forest />,
-        loader: () => axios.get("http://localhost:5000/forest"),
+        loader: () => axios.get("https://nature-art.vercel.app/forest"),
       },
       {
         path: "/architecture",
         element: <Architecture />,
-        loader: () => axios.get("http://localhost:5000/architecture"),
+        loader: () => axios.get("https://nature-art.vercel.app/architecture"),
       },
       {
         path: "/floral",
         element: <Floral />,
-        loader: () => axios.get("http://localhost:5000/floral"),
+        loader: () => axios.get("https://nature-art.vercel.app/floral"),
       },
       {
         path: "/realistic",
         element: <Realistic />,
-        loader: () => axios.get("http://localhost:5000/realistic"),
+        loader: () => axios.get("https://nature-art.vercel.app/realistic"),
       },
       {
         path: "/abstract",
         element: <Abstract />,
-        loader: () => axios.get("http://localhost:5000/abstract"),
+        loader: () => axios.get("https://nature-art.vercel.app/abstract"),
       },
       {
         path: "/:location/:_id",
         element: <ViewArtDetails />,
         loader: ({ params }) =>
-          axios.get(`http://localhost:5000/${params.location}/${params._id}`),
+          axios.get(
+            `https://nature-art.vercel.app/${params.location}/${params._id}`
+          ),
       },
     ],
   },

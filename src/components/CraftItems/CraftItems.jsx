@@ -17,7 +17,11 @@ const CraftItems = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/forest");
+        const res = await axios.get("https://nature-art.vercel.app/forest", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         setItems(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);

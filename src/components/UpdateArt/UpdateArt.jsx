@@ -52,7 +52,10 @@ const UpdateArt = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.put(`http://localhost:5000/userArt/${_id}`, data);
+      const res = await axios.put(
+        `https://nature-art.vercel.app/userArt/${_id}`,
+        data
+      );
       console.log(res);
       if (res?.data?.acknowledged) {
         Swal.fire({
