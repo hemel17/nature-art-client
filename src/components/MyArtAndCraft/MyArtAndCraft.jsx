@@ -56,9 +56,7 @@ const MyArtAndCraft = () => {
     });
     if (confirmation.isConfirmed) {
       try {
-        const res = await axios.delete(
-          `https://nature-art-server.onrender.com/userArt/${_id}`
-        );
+        const res = await axios.delete(`http://localhost:5000/userArt/${_id}`);
         if (res.status === 200) {
           const filtered = art.filter((e) => e._id !== _id);
           setArt(filtered);

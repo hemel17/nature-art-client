@@ -54,9 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(
-            `https://nature-art-server.onrender.com/forest/${params._id}`
-          ),
+          axios.get(`http://localhost:5000/forest/${params._id}`),
       },
       {
         path: "/viewUserArtDetails/:_id",
@@ -66,9 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(
-            `https://nature-art-server.onrender.com/userArt/${params._id}`
-          ),
+          axios.get(`http://localhost:5000/userArt/${params._id}`),
       },
       {
         path: "/allArtAndCraftItems",
@@ -77,8 +73,7 @@ const router = createBrowserRouter([
             <AllArtAndCraftItems />
           </PrivateRoute>
         ),
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/userArt"),
+        loader: () => axios.get("http://localhost:5000/userArt"),
       },
       {
         path: "/myArt&CraftList/",
@@ -87,8 +82,7 @@ const router = createBrowserRouter([
             <MyArtAndCraft />
           </PrivateRoute>
         ),
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/userArt"),
+        loader: () => axios.get("http://localhost:5000/userArt"),
       },
       {
         path: "/updateArt/:_id",
@@ -98,53 +92,43 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios.get(
-            `https://nature-art-server.onrender.com/userArt/${params._id}`
-          ),
+          axios.get(`http://localhost:5000/userArt/${params._id}`),
       },
       {
         path: "/mountain",
         element: <Mountain />,
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/mountain"),
+        loader: () => axios.get("http://localhost:5000/mountain"),
       },
       {
         path: "/forest",
         element: <Forest />,
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/forest"),
+        loader: () => axios.get("http://localhost:5000/forest"),
       },
       {
         path: "/architecture",
         element: <Architecture />,
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/architecture"),
+        loader: () => axios.get("http://localhost:5000/architecture"),
       },
       {
         path: "/floral",
         element: <Floral />,
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/floral"),
+        loader: () => axios.get("http://localhost:5000/floral"),
       },
       {
         path: "/realistic",
         element: <Realistic />,
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/realistic"),
+        loader: () => axios.get("http://localhost:5000/realistic"),
       },
       {
         path: "/abstract",
         element: <Abstract />,
-        loader: () =>
-          axios.get("https://nature-art-server.onrender.com/abstract"),
+        loader: () => axios.get("http://localhost:5000/abstract"),
       },
       {
         path: "/:location/:_id",
         element: <ViewArtDetails />,
         loader: ({ params }) =>
-          axios.get(
-            `https://nature-art-server.onrender.com/${params.location}/${params._id}`
-          ),
+          axios.get(`http://localhost:5000/${params.location}/${params._id}`),
       },
     ],
   },

@@ -17,9 +17,7 @@ const CraftItems = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          "https://nature-art-server.onrender.com/forest"
-        );
+        const res = await axios.get("http://localhost:5000/forest");
         setItems(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
